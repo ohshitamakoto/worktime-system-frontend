@@ -1,0 +1,134 @@
+.seat36{
+    width: 70px;
+    box-shadow: 0px 0px 3px 2px #9179ef;
+    border-radius: 5px;
+    background-color: rgb(244, 245, 248);
+  }
+.seat35{
+    width: 70px;
+    box-shadow: 0px 0px 3px 2px #ffa200;
+    border-radius: 5px;
+    background-color: rgb(244, 245, 248);
+}
+.seat37{
+  width: 70px;
+  box-shadow: 0px 0px 3px 2px #00bf06;
+  border-radius: 5px;
+  background-color: rgb(244, 245, 248);
+}
+.seat33{
+  width: 70px;
+  box-shadow: 0px 0px 3px 2px #f90000;
+  border-radius: 5px;
+  background-color: rgb(244, 245, 248);
+}
+.seat11{
+  width: 70px;
+  box-shadow: 0px 0px 3px 2px #bbf900;
+  border-radius: 5px;
+  background-color: rgb(244, 245, 248);
+}
+.seat15{
+  width: 70px;
+  box-shadow: 0px 0px 3px 2px #0000f9;
+  border-radius: 5px;
+  background-color: rgb(244, 245, 248);
+}
+.posi{
+  width: 70px;
+  box-shadow: 0px 0px 4px 6px #020202;
+  border-radius: 40px;
+  background-color: rgb(244, 245, 248);
+}
+.seat{
+  width: 70px;
+  box-shadow: 0px 0px 3px 2px #7e7d7d;
+  border-radius: 5px;
+  background-color: rgb(244, 245, 248);
+}
+.pillar{
+  width: 60px;
+  box-shadow: 4px 4px 21px -5px #777777;
+  border-radius: 5px;
+  background-color: rgb(161, 144, 144);
+  color: rgb(161, 144, 144);
+}
+.seatBlank{
+  width: 40px;
+  border-radius: 10px;
+  background-color: rgba(215, 232, 207, 0);
+  color: rgb(215, 232, 207, 0);
+}
+.seatName {
+  padding: 0;
+  font-size: 17px;
+  margin-bottom: 2px;
+  margin-top: 1;
+}
+.seatTime {
+  padding: 0;
+  font-size: 12px;
+  margin-bottom: 4px;
+  margin-top: 0;
+}
+.seatTime2 {
+  padding: 0;
+  color: red;
+  font-size: 12px;
+  margin-bottom: 3px;
+  margin-top: 0;
+}
+
+.cardState1 {
+  padding: 0;
+  font-size: 12px;
+  color: white;
+  background-color: blue;
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+.cardState1_1 {
+  padding: 0;
+  font-size: 12px;
+  color: white;
+  background-color: rgb(3, 163, 67);
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+.cardState1_2 {
+  padding: 0;
+  font-size: 12px;
+  color: white;
+  background-color: rgb(124, 120, 120);
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+.cardState1_3 {
+  padding: 0;
+  font-size: 12px;
+  color: white;
+  background-color: rgb(8, 162, 228);
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+.cardState2 {
+  padding: 0;
+  font-size: 12px;
+  color: white;
+  background-color: red;
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+.cardState3 {
+  padding: 0;
+  font-size: 12px;
+  color: red;
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+.sensor{
+  width: 70px;
+  box-shadow: 0px 0px 3px 2px #020202;
+  border-radius: 35px;
+  background-color: rgb(244, 245, 248);
+}

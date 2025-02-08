@@ -1,0 +1,83 @@
+nav{
+  background-color: rgb(72, 228, 124);
+  color: white;
+  height: 80px;
+  font-weight: 600;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav{
+  background-color: rgb(90, 72, 228);
+  color: white;
+  height: 80px;
+  font-weight: 600;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav_m{
+  background-color: rgb(72, 228, 124);
+  color: white;
+  height: 80px;
+  font-weight: 600;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+logo{
+  width: 10%;
+  height: auto;
+}
+
+.button_help {
+
+  color: white;
+  padding: 0.7rem;
+  font-size: 30px;
+  border-radius: 1.8rem;
+  cursor: pointer;
+  background-color: #133171;
+  border: 3px solid #3e355f;
+}
+.button_close {
+
+  color: white;
+  padding: 0.7rem;
+  font-size: 30px;
+  border-radius: 1.8rem;
+  cursor: pointer;
+  background-color: #133171;
+  border: 8px solid #f2f2f5;
+}
+.overlay{
+  /*　画面全体を覆う設定　*/
+    position:fixed;
+    border-radius: 8px;
+    border: none;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index: 10;
+    background-color:rgba(0,0,0,0.5);
+  
+    /*　画面の中央に要素を表示させる設定　*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+
+.imgstyl{
+    border-radius: 20px;
+    width:60%;
+    height:100%;
+    width: auto;
+    height: auto;
+  }

@@ -1,0 +1,190 @@
+.App {
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.kintaiCardHeaderContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.kintaiCardContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, auto);
+  place-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+.kintaiCardHeaderContainerM {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.kintaiCardContainerM {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, auto);
+  place-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+.header {
+  padding: 0;
+  font-size: 30px;
+  color: rgb(2, 27, 57);
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.header2 {
+  padding: 0;
+  font-size: 20px;
+  color: rgb(2, 27, 57);
+  margin-bottom: 10px;
+  margin-top: 0;
+  text-align: right;
+}
+
+.header3 {
+  padding: 0;
+  font-size: 22px;
+  color: rgb(2, 27, 57);
+  margin-bottom: 10px;
+  margin-top: 0;
+  text-align: right;
+}
+.header4 {
+  padding: 0;
+  font-size: 22px;
+  color: rgb(2, 27, 57);
+  margin-bottom: -10px;
+  margin-top: 0;
+  text-align: right;
+}
+/*掲示板レイアウト*/
+.slide-sample {
+  margin : 20px auto;
+  width : 1600px;
+  overflow : hidden;
+  background-color: #38332e; /*掲示板の背景色*/
+  border: 3px solid #757575;
+}
+
+.slide-sample ul{
+  display : inline-block;
+  margin: 0;
+  padding-left: 100%;
+  white-space : nowrap;
+  animation : SlideSample 24s linear infinite;
+}
+
+.slide-sample ul li{
+  display:inline;
+  margin: 0 80px 0 0;
+  color: #ffffff;
+  font-size: 46px;
+  letter-spacing: .12em; /*文字の間隔*/
+  text-shadow: 0 0 6px; /*文字のぼかし*/
+}
+
+@keyframes SlideSample{
+  0% { transform: translateX(0)}
+  100% { transform: translateX(-100%)}
+}
+
+/* ボックス全体のレイアウト調整 ↓ */
+.box{
+  display: flex;
+  padding: 10px 20px;
+  justify-content: start;
+  width: 1710px;
+  /*background-color: #7a7a7a;*/
+  margin: 0 auto;
+}
+
+/* 指定席ボックスのデザイン ↓ */
+.left-box{
+  margin : 20px auto;
+  width : 100px;
+  background-color: #38332e;
+  border: 3px solid #757575;
+}
+.left-box p {
+  margin: 0 auto;
+  color: #30f33d;
+  font-size: 34px;
+  letter-spacing: .08em;
+  text-shadow: 0 0 6px;
+  line-height: 0.8;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.left-box p span{
+  font-size: 14px;
+}
+
+/* 座席 */
+.kintaiSeatContainer {
+  display: grid;
+  grid-template-columns: 20px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(9, auto);
+  place-items: center;
+  background-color:rgb(101, 106, 133);
+  gap: 2px;
+  margin-top: 5px;
+  overflow-x: scroll;
+}
+
+/* 金沢７F駅側 座席 */
+.kintaiSeatK7FSContainer {
+  display: grid;
+  grid-template-columns: 120px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(9, auto);
+  place-items: center;
+  background-color:rgb(200, 221, 204);
+  gap: 2px;
+  margin-top: 5px;
+  overflow-x: scroll;
+}
+
+/* 仙台定禅寺オフィス 座席 */
+.kintaiSeatSJContainer {
+  display: grid;
+  grid-template-columns: 120px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(9, auto);
+  place-items: center;
+  background-color:rgb(135, 161, 181);
+  gap: 2px;
+  margin-top: 5px;
+  overflow-x: scroll;
+}
+
+.button {
+  display: grid;
+  background: transparent;
+  border: none;
+  outline: none;
+  gap: 2px;
+  margin-top: 5px;
+}
+
+.sectSpace {
+  width: 10px;
+  height: 40px;
+  margin: 0px;
+  display:inline-block;
+}

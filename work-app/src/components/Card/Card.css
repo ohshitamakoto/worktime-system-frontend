@@ -1,0 +1,126 @@
+.card{
+  width: 250px;
+  box-shadow: 4px 4px 21px -5px #777777;
+  border-radius: 5px;
+  background-color: white;
+}
+.cardBlank{
+  width: 250px;
+  border-radius: 10px;
+  background-color: rgb(228, 237, 240);
+  color: rgb(228, 237, 240);
+}
+
+.cardName {
+  padding: 0;
+  font-size: 20px;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+.cardName1 {
+  padding: 0;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px;
+  background-color: rgb(0, 0, 255);
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+.cardName2 {
+  padding: 0;
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: rgb(124, 120, 120);
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.card_State1 {
+  padding: 0;
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+
+.card_State1_1 {
+  padding: 0;
+  font-size: 12px;
+  color: white;
+  background-color: rgb(112, 112, 250);
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+
+.cardState1 {
+  padding: 0;
+  font-size: 14px;
+  color: white;
+  background-color: rgb(0, 0, 255);
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+
+.cardTime {
+  padding: 0;
+  font-size: 14px;
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+
+.cardState1_1 {
+  padding: 0;
+  font-size: 14px;
+  color: white;
+  background-color: rgb(3, 163, 67);
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+.cardState1_2 {
+  padding: 0;
+  font-size: 14px;
+  color: white;
+  background-color: rgb(124, 120, 120);
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+.cardState1_3 {
+  padding: 0;
+  font-size: 14px;
+  color: white;
+  background-color: rgb(8, 162, 228);
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+.cardState2 {
+  padding: 0;
+  font-size: 14px;
+  color: white;
+  background-color: red;
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+.cardState3 {
+  padding: 0;
+  font-size: 14px;
+  color: rgb(30, 0, 255);
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+.cardState4 {
+  padding: 0;
+  font-size: 14px;
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+.cardState5 {
+  padding: 0;
+  font-size: 12px;
+  color: white;
+  background-color: rgb(28, 129, 224);
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+.cardInfo{
+  text-align: center;
+}

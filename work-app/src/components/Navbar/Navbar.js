@@ -2,7 +2,7 @@ import React from 'react'
 import "./Navbar.css"
 import Digit from "./DigitalDateTime.js"
 import Logo from "./time.PNG"
-import Kai from "./kaisetsu_1.PNG"
+import Kai from "./kaisetsu_2.png"
 import { Link } from 'react-router-dom';
 //<button className="button_help"><Link to="/chart">📊</Link></button> 
 const Navbar = ({title, sect}) => {
@@ -16,14 +16,14 @@ const Navbar = ({title, sect}) => {
   return (
     <nav>
     <img src={Logo} className="logo" width="100" alt="写真" />
-
+    
     {title}
     <>　　</>
     <Digit />
     <>　</>
     <button className="button_help"  onClick={() => onClickOpen()}> 説明 </button>
     <button className="button_help"><Link to="/chart">📊</Link></button>
-    
+    　NEW
     <dialog id="dialog">
       <div className="overlay">
         <img src={Kai} className="imgstyl" alt="写真" />

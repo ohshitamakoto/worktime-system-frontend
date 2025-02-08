@@ -24,6 +24,7 @@ const Seat = ({seat}) => {
         sect === 21 ? "seat35" :
         sect === 14 ? "seat37" :
         sect === 0 ? "posi" :
+        sect === 1 ? "phone" :
         name === "試験中" ? "sensor" :
         "seat"}>
           <h3 className={name === "通路" ? "seatBlank" : "seatName"}>{name}</h3>

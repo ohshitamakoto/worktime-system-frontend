@@ -1,9 +1,7 @@
 import React, { useState, useEffect} from "react";
-import { getKintaiData } from "./utils/kintai.js";
-import { getContentData } from "./utils/kintai.js";
+import { getKintaiData, changeSect } from "./utils/kintai.js";
 import './App.css';
 import Card from './components/Card/Card.js';
-import Seat from './components/Seat/Seat.js';
 import Navbar from './components/Navbar/Navbar.js';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -17,6 +15,7 @@ import Sys_sol from "./system.js";
 import ChartComponent from "./workInfo.js";
 import Rd_zaseki from './zaseki.js';
 import {Rd_zaseki_all} from "./zaseki_all.js";
+import {Rd_zaseki_free} from "./zaseki_free.js";
 import { GetWeatherNewsS, GetWeatherNewsK, GetWeatherNewsH, GetMessage, GetWeatherState } from './components/Contents/weather.js'
 var init_no = 31
 var initialURL = process.env.REACT_APP_BACKEND_URL + "31";
@@ -29,13 +28,15 @@ var initialTeam = 0
 const FetchData = () => {  
   const [loading, setLoading] = useState(true);
   const [kintaiData, setKintaiData ] = useState([]);
+  const [kintaiHistoryData, setKintaiHistoryData ] = useState([]);
   const [count, setCount] = useState(0);
+  const [trip, setTrip] = useState(0);
+  const [freeno, setFreeno] = useState(0);
   const [update, setUpdate] = useState(false);
   var upTime;
   //swiper
   const [swiper, setSwiper] = useState(null);
   const [value, setValue] = useState(0);
-
   const slideChange = (index) => {
     setValue(index);
     team = init_no + index;
@@ -45,12 +46,15 @@ const FetchData = () => {
     if (team === 38){
       team = 39;
     }
-    if(index <= 8){
+    if (team === 40){
+      team = 50;
+    }
+    if(index <= 9){
       initialURL = backendURL + team;
     }
     initialTab = 99;
     setCount(index)
-    console.log(initialURL,index);
+    console.log(initialURL,index,team);
   };
   const tabChange = (event, newValue) => {
     setValue(newValue);
@@ -83,8 +87,13 @@ const FetchData = () => {
         content_message = g_msg + fuga;
       }
 
+      //出張者情報を取得
+      var trip_url = process.env.REACT_APP_BACKEND_URL + "trip_info"
+      let trip_res = await getKintaiData(trip_url);
+      setTrip(trip_res)
+
       //勤怠データを取得
-      if(team <= 39){
+      if(team <= 39 || team === 50){
         let res = await getKintaiData(initialURL);
         console.log("URL1",initialURL,team);
         
@@ -111,22 +120,78 @@ const FetchData = () => {
     clickCount++;
     if (clickCount < 2) {
       setTimeout(() => {
-        if (1 < clickCount) {
+        if (2 === clickCount) {
           doubleClick(sect,n);
         }
+        if (1 === clickCount) {
+          singleClick(sect,n);
+        }
         clickCount = 0;
-      }, 500);
+      }, 400);
     }
   }
-  const doubleClick = async (sect,n) => {
+  const his_dialog = document.querySelector("#his_dialog");
+  const singleClick = async (sect,n) => {
     try {
-      console.log("クリック!",n,sect);
-      var purl = backendURL + sect;
+      console.log("シングルクリック!",n,sect);
+      var purl = backendURL + "history";
       const response = await fetch(purl,{
         method: "POST",
         headers:{'Content-Type': 'application/json'},
-        body: JSON.stringify({num: n})
+        body: JSON.stringify({name: kintaiData[n].name.DisplayName,sect:sect})
       });
+      const data = await response.json();
+      console.log(data)
+      console.log(kintaiData[n].name.DisplayName)
+      setKintaiHistoryData(data);
+      //setKintaiData(data);
+      his_dialog.showModal();
+      setFreeno(n);
+      return data;
+    } catch (err) {
+      alert(err)
+    }
+  }
+  const onClickClose = () => {
+    his_dialog.close();
+  }
+  
+  const onSeatSet = async (kind) => {
+    const seatParams = new URLSearchParams();
+    seatParams.set("name", kintaiData[freeno].name.DisplayName);
+    var result = kintaiData[freeno].team.Value.substr(0, 2);
+    seatParams.set("sect", result);
+    seatParams.set("set", kind);
+    //doubleClick(result,freeno,"出社");
+    var purl = backendURL + result;
+    await fetch(purl,{
+      method: "POST",
+      headers:{'Content-Type': 'application/json'},
+      body: JSON.stringify({num: freeno,state: "出社"})
+    });
+    const url_string = `/seat_set?${seatParams.toString()}`;
+    window.location.href = url_string;
+  }
+
+  const doubleClick = async (sect,n,st) => {
+    try {
+      console.log("ダブルクリック!",n,sect,st);
+      var purl = backendURL + sect;
+      var response;
+      if (st === "出社"){
+        response = await fetch(purl,{
+          method: "POST",
+          headers:{'Content-Type': 'application/json'},
+          body: JSON.stringify({num: n,state: st})
+        });
+      } else {
+        response = await fetch(purl,{
+          method: "POST",
+          headers:{'Content-Type': 'application/json'},
+          body: JSON.stringify({num: n})
+        });
+      }
+
       const data = await response.json();
       //console.log(data)
       setKintaiData(data);
@@ -163,14 +228,10 @@ const FetchData = () => {
             }
             Teams同期時刻：{upTime}
             </div>
-            <Button variant="outlined" size="x-large" component={Link} to="/musen/11">無線ソリューション部</Button>
-            <div className="sectSpace">　</div>
-            <Button variant="outlined" size="x-large" component={Link} to="/system/21">システムソリューション部</Button>
-            <div className="sectSpace">　</div>
-            <Button variant="outlined" size="x-large" component={Link} to="/team/31">AIソリューション部</Button>
-            <div className="sectSpace">　</div>
-            <Button variant="outlined" size="x-large" component={Link} to="/layout">座席表</Button>
-
+            <button className="chsect_button"  onClick={() => changeSect("/musen/11")}> 無線ソリューション部 </button><div className="sectSpace">　</div>            
+            <button className="chsect_button"  onClick={() => changeSect("/system/21")}> システムソリューション部 </button><div className="sectSpace">　</div>
+            <button className="chsect_button"  onClick={() => changeSect("/team/31")}> AIソリューション部 </button><div className="sectSpace">　</div>
+            <button className="chsect_button"  onClick={() => changeSect("/layout")}> 座席表 </button>
             <div className="header3">
               <Tabs value={value} onChange={tabChange} centered>
                 <Tab label=<div className="header3">技術31課 </div> value={0} />
@@ -182,9 +243,11 @@ const FetchData = () => {
                 <Tab label=<div className="header3">技術37課 </div> value={6} />
                 <Tab label=<div className="header3">技術39課 </div> value={7} />
                 <Tab label=<div className="header3">AI Sol </div> value={8} />
+                <Tab label=<div className="header3">定禅寺オフィス </div> value={9} />
               </Tabs>
 
             </div>
+            
             <Swiper
               spaceBetween={50}
               slidesPerView={1}
@@ -318,6 +381,33 @@ const FetchData = () => {
                 })}
                 </div>
               </SwiperSlide>
+              <SwiperSlide>
+                
+                <div className="kintaiCardHeaderContainerJ">
+                <h3 className="header">35課</h3>
+                <h3 className="header">1係</h3>
+                <h3 className="header">2係</h3>
+                <h3 className="header">3係</h3>
+                <h3 className="header">4係</h3>
+                <h3 className="header">5係</h3>
+                <h3 className="header">36課　5係</h3>
+                </div>
+                <div className="kintaiCardContainerJ">
+                {kintaiData.map((kintai,i) => {
+                  return <button className="button"  onClick={() => onDClick("50",i)} key={i}><Card kintai={kintai} /> </button>;
+                })}
+                </div>
+                <div className="box2">
+                <div className="left-box2">
+                <p>定禅寺オフィス出張者情報</p>
+                </div>
+                <div className="slide-sample2">
+                    <ul>
+                    <li>{trip}</li>
+                    </ul>    
+                </div>
+                </div>
+              </SwiperSlide>
             </Swiper>
 
 
@@ -334,6 +424,29 @@ const FetchData = () => {
           </>
         )}
       </div>
+      <dialog id="his_dialog">
+        <div className="overlay">
+          <div className="history_dialog">
+            <p>{kintaiHistoryData["name"]}</p>
+              <div className="history_dialog_history">
+                {kintaiHistoryData["day1"]}<br></br>
+                <div className="history_dialog2">
+                  {kintaiHistoryData["day2"]}
+                </div>
+                {kintaiHistoryData["day3"]}<br></br>
+                {kintaiHistoryData["day4"]}<br></br>
+                {kintaiHistoryData["day5"]}<br></br>
+              </div>
+              <br></br>
+            <button className="his_button_seat"  onClick={() => onSeatSet("set")}> フリー座席指定（兼 出社勤務） </button>
+            <button className="his_button_seat"  onClick={() => onSeatSet("rel")}> フリー座席解除 </button>
+            <br></br>
+            <br></br>
+            <button className="his_button_close"  onClick={() => onClickClose()}> 閉じる </button>
+          </div>
+          
+        </div>
+      </dialog>
     </>
   );
 };
@@ -367,6 +480,7 @@ function Kintai() {
       <Route path="/zaseki/" component={Rd_zaseki} />
       <Route path="/chart/" component={ChartComponent} />
       <Route path="/set/" component={Info_set} />
+      <Route path="/seat_set/" component={Rd_zaseki_free} />
       <Route path="/" component={FetchData} />
       </Switch>
       </BrowserRouter>
@@ -381,9 +495,7 @@ function Info_set() {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(true);
   
-  var purl = process.env.REACT_APP_BACKEND_URL + "content"
-  //var purl = "http://10.62.14.72:5001/content"
-  
+  var purl = process.env.REACT_APP_BACKEND_URL + "content"  
   
   useEffect(() => {
     const fetchKintaiData = async () => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { getKintaiData } from "./utils/kintai.js";
+import { getKintaiData, changeSect } from "./utils/kintai.js";
 import './App.css';
 import Card from './components/Card/Card.js';
 import Navbar from './components/Navbar/Navbar.js';
@@ -8,12 +8,10 @@ import 'swiper/css';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { Button } from "@mui/material";
 import { GetWeatherNewsS, GetWeatherNewsK, GetWeatherNewsH, GetMessage, GetWeatherState } from './components/Contents/weather.js'
 var init_no_m = 21
-var initialURL_m = "http://hoya.pmcrd.mei.co.jp:5001/21";
-var backendURL = "http://hoya.pmcrd.mei.co.jp:5001/"
+var initialURL_m = process.env.REACT_APP_BACKEND_URL + "21";
+var backendURL = process.env.REACT_APP_BACKEND_URL
 var team_w = init_no_m
 var initialTab_m = 99
 var initialTeam_m = 0
@@ -22,7 +20,9 @@ var message = ""
 const Sys_sol = () => {  
   const [loading, setLoading] = useState(true);
   const [kintaiData, setKintaiData ] = useState([]);
+  const [kintaiHistoryData, setKintaiHistoryData ] = useState([]);
   const [count, setCount] = useState(0);
+  const [freeno, setFreeno] = useState(0);
   const [update, setUpdate] = useState(false);
   var upTime;
 
@@ -101,22 +101,78 @@ const Sys_sol = () => {
     clickCount++;
     if (clickCount < 2) {
       setTimeout(() => {
-        if (1 < clickCount) {
+        if (2 === clickCount) {
           doubleClick(sect,n);
+        }
+        if (1 === clickCount) {
+          singleClick(sect,n);
         }
         clickCount = 0;
       }, 500);
     }
   }
-  const doubleClick = async (sect,n) => {
+  const his_dialog = document.querySelector("#his_dialog");
+  const singleClick = async (sect,n) => {
     try {
-      console.log("クリック!",n,sect);
-      var purl = backendURL + sect;
+      console.log("シングルクリック!",n,sect);
+      var purl = backendURL + "history";
       const response = await fetch(purl,{
         method: "POST",
         headers:{'Content-Type': 'application/json'},
-        body: JSON.stringify({num: n})
+        body: JSON.stringify({name: kintaiData[n].name.DisplayName,sect:sect})
       });
+      const data = await response.json();
+      console.log(data)
+      console.log(kintaiData[n].name.DisplayName)
+      setKintaiHistoryData(data);
+      //setKintaiData(data);
+      his_dialog.showModal();
+      setFreeno(n);
+      return data;
+    } catch (err) {
+      alert(err)
+    }
+  }
+  const onClickClose = () => {
+    his_dialog.close();
+  }
+  
+  const onSeatSet = async (kind) => {
+    const seatParams = new URLSearchParams();
+    seatParams.set("name", kintaiData[freeno].name.DisplayName);
+    var result = kintaiData[freeno].team.Value.substr(0, 2);
+    seatParams.set("sect", result);
+    seatParams.set("set", kind);
+    //doubleClick(result,freeno,"出社");
+    var purl = backendURL + result;
+    await fetch(purl,{
+      method: "POST",
+      headers:{'Content-Type': 'application/json'},
+      body: JSON.stringify({num: freeno,state: "出社"})
+    });
+    const url_string = `/seat_set?${seatParams.toString()}`;
+    window.location.href = url_string;
+  }
+
+  const doubleClick = async (sect,n,st) => {
+    try {
+      console.log("ダブルクリック!",n,sect,st);
+      var purl = backendURL + sect;
+      var response;
+      if (st === "出社"){
+        response = await fetch(purl,{
+          method: "POST",
+          headers:{'Content-Type': 'application/json'},
+          body: JSON.stringify({num: n,state: st})
+        });
+      } else {
+        response = await fetch(purl,{
+          method: "POST",
+          headers:{'Content-Type': 'application/json'},
+          body: JSON.stringify({num: n})
+        });
+      }
+
       const data = await response.json();
       //console.log(data)
       setKintaiData(data);
@@ -148,15 +204,11 @@ const Sys_sol = () => {
             }
             Teams同期時刻：{upTime}
             </div>
-
-            <Button variant="outlined" size="x-large" component={Link} to="/musen/11">無線ソリューション部</Button>
-            <div className="sectSpace">　</div>
-            <Button variant="outlined" size="x-large" component={Link} to="/system/21">システムソリューション部</Button>
-            <div className="sectSpace">　</div>
-            <Button variant="outlined" size="x-large" component={Link} to="/team/31">AIソリューション部</Button>
-            <div className="sectSpace">　</div>
-            <Button variant="outlined" size="x-large" component={Link} to="/layout">座席表</Button>
-
+            <button className="chsect_button"  onClick={() => changeSect("/musen/11")}> 無線ソリューション部 </button><div className="sectSpace">　</div>            
+            <button className="chsect_button"  onClick={() => changeSect("/system/21")}> システムソリューション部 </button><div className="sectSpace">　</div>
+            <button className="chsect_button"  onClick={() => changeSect("/team/31")}> AIソリューション部 </button><div className="sectSpace">　</div>
+            <button className="chsect_button"  onClick={() => changeSect("/layout")}> 座席表 </button>
+ 
             <div className="header3">
               <Tabs value={value} onChange={tabChange} centered>
                 <Tab label=<div className="header3">技術21課 </div> value={0} />
@@ -261,6 +313,29 @@ const Sys_sol = () => {
           </>
         )}
       </div>
+      <dialog id="his_dialog">
+        <div className="overlay">
+          <div className="history_dialog">
+            <p>{kintaiHistoryData["name"]}</p>
+              <div className="history_dialog_history">
+                {kintaiHistoryData["day1"]}<br></br>
+                <div className="history_dialog2">
+                  {kintaiHistoryData["day2"]}
+                </div>
+                {kintaiHistoryData["day3"]}<br></br>
+                {kintaiHistoryData["day4"]}<br></br>
+                {kintaiHistoryData["day5"]}<br></br>
+              </div>
+              <br></br>
+            <button className="his_button_seat"  onClick={() => onSeatSet("set")}> フリー座席指定（兼 出社勤務） </button>
+            <button className="his_button_seat"  onClick={() => onSeatSet("rel")}> フリー座席解除 </button>
+            <br></br>
+            <br></br>
+            <button className="his_button_close"  onClick={() => onClickClose()}> 閉じる </button>
+          </div>
+          
+        </div>
+      </dialog>
     </>
   );
 };

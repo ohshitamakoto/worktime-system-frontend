@@ -3,7 +3,11 @@
   width: 100%;
   height: 100vh;
 }
-
+.map {
+  text-align: center;
+  width : 1920px;
+  margin:  0 auto;            /* 中央寄せ */
+}
 .kintaiCardHeaderContainer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -11,10 +15,25 @@
   gap: 5px;
   margin-top: 5px;
 }
-
 .kintaiCardContainer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, auto);
+  place-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+.kintaiCardHeaderContainerJ {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+.kintaiCardContainerJ {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-auto-flow: column;
   grid-template-rows: repeat(7, auto);
   place-items: center;
@@ -62,15 +81,17 @@
   margin-bottom: 10px;
   margin-top: 0;
   text-align: right;
+  
 }
 .header4 {
   padding: 0;
   font-size: 22px;
-  color: rgb(2, 27, 57);
+  background-color: #38332e; /*掲示板の背景色*/
   margin-bottom: -10px;
   margin-top: 0;
   text-align: right;
 }
+
 /*掲示板レイアウト*/
 .slide-sample {
   margin : 20px auto;
@@ -97,6 +118,27 @@
   text-shadow: 0 0 6px; /*文字のぼかし*/
 }
 
+.slide-sample2 {
+  margin : 0px auto;
+  width : 1600px;
+  overflow : hidden;
+}
+.slide-sample2 ul{
+  display : inline-block;
+  margin: 0;
+  padding-left: 100%;
+  white-space : nowrap;
+  animation : SlideSample 15s linear infinite;
+}
+
+.slide-sample2 ul li{
+  display:inline;
+  margin: 0 80px 0 0;
+  color: #444141;
+  font-size: 46px;
+  letter-spacing: .12em; /*文字の間隔*/
+  text-shadow: 0 0 6px; /*文字のぼかし*/
+}
 @keyframes SlideSample{
   0% { transform: translateX(0)}
   100% { transform: translateX(-100%)}
@@ -134,10 +176,39 @@
   font-size: 14px;
 }
 
+/* 指定席ボックスのデザイン ↓ */
+.box2{
+  display: flex;
+  padding: 10px 20px;
+  justify-content: start;
+  width: 1710px;
+  /*background-color: #7a7a7a;*/
+  margin: 0 auto;
+}
+
+.left-box2{
+  margin : 0px auto;
+  width : 300px;
+}
+.left-box2 p {
+  margin: 0 auto;
+  color: #393a3a;
+  font-size: 34px;
+  letter-spacing: .08em;
+  text-shadow: 0 0 6px;
+  line-height: 0.8;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.left-box2 p span{
+  font-size: 14px;
+}
+
 /* 座席 */
 .kintaiSeatContainer {
   display: grid;
-  grid-template-columns: 20px;
+  grid-template-columns: 5px;
   grid-auto-flow: column;
   grid-template-rows: repeat(9, auto);
   place-items: center;
@@ -146,18 +217,72 @@
   margin-top: 5px;
   overflow-x: scroll;
 }
+/* 座席 */
+.kintaiSeatContainer2 {
+  display: grid;
+  grid-template-columns: 5px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(9, auto);
+  place-items: center;
+  /*background-color:rgb(35, 63, 221);*/
+  gap: 2px;
+  margin-top: 15px;
+  width : 2040px;
+  height: 900px;
 
-/* 金沢７F駅側 座席 */
-.kintaiSeatK7FSContainer {
+}
+/* 浜松 4-5F 座席 */
+.kintaiSeatContainerhama45f {
   display: grid;
   grid-template-columns: 120px;
   grid-auto-flow: column;
   grid-template-rows: repeat(9, auto);
   place-items: center;
-  background-color:rgb(200, 221, 204);
+  /*background-color:rgb(35, 63, 221);*/
   gap: 2px;
-  margin-top: 5px;
-  overflow-x: scroll;
+  margin-top: 15px;
+  width : 1600px;
+  height: 900px;
+
+}
+/* 浜松 6F 座席 */
+.kintaiSeatContainerhama6f {
+  display: grid;
+  grid-template-columns: 120px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(9, auto);
+  place-items: center;
+  /*background-color:rgb(35, 63, 221);*/
+  gap: 2px;
+  margin-top: 15px;
+  width : 1200px;
+  height: 900px;
+
+}
+/* 座席 */
+.kintaiSeatContainer3 {
+  display: grid;
+  grid-template-columns: 5px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(9, auto);
+  place-items: center;
+  /*background-color:rgb(35, 63, 221);*/
+  gap: 2px;
+  margin-top: 15px;
+
+}
+/* 金沢７F駅側 座席 */
+.kintaiSeatK7FSContainer {
+  display: grid;
+  grid-template-columns: 95px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(9, auto);
+  place-items: center;
+  /*background-color:rgb(35, 63, 221);*/
+  gap: 1px;
+  margin-top: 15px;
+  width : 1880px;
+  height: 900px;
 }
 
 /* 仙台定禅寺オフィス 座席 */
@@ -188,3 +313,84 @@
   margin: 0px;
   display:inline-block;
 }
+.history_dialog {
+
+  color: black;
+  padding: 0.7rem;
+  font-size: 40px;
+  border-radius: 1.2rem;
+  cursor: pointer;
+  background-color: rgb(205, 225, 235);
+  
+  text-align: center;
+}
+.history_dialog2 {
+
+  color: black;
+  font-size: 35px;
+  border-radius: 0.5rem;
+  background-color: rgb(205, 225, 235);
+}
+.history_dialog_history {
+
+  color: white;
+  padding: 0.7rem;
+  font-size: 35px;
+  border-radius: 1.2rem;
+  cursor: pointer;
+  background-color: #2b3d5f;
+  text-align: left;
+}
+.p {
+  /* 水平方向の中央揃え */
+  text-align: center;
+}
+.chsect_button {
+
+  color: white;
+  padding: 0.2rem;
+  font-size: 19px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: #7e7d7da5;
+  border: 2px solid white;
+}
+.his_button_close {
+
+  color: white;
+  padding: 0.7rem;
+  font-size: 30px;
+  border-radius: 1.8rem;
+  cursor: pointer;
+  background-color: #2b3d5f;
+  border: 4px solid white;
+}
+.his_button_seat {
+
+  color: white;
+  padding: 0.7rem;
+  font-size: 30px;
+  border-radius: 1.2rem;
+  cursor: pointer;
+  background-color: #2b3d5f;
+  border: 4px solid white;
+  
+}
+.overlay{
+  /*　画面全体を覆う設定　*/
+    position:fixed;
+    border-radius: 8px;
+    border: none;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index: 10;
+    background-color:rgba(0,0,0,0.5);
+  
+    /*　画面の中央に要素を表示させる設定　*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }

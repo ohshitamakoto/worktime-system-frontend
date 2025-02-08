@@ -3,7 +3,7 @@
   font-size: 35px;
   font-weight: bold; /*太字に*/
   color: #050505;
-  background-color: #c2bdcd; /*掲示板の背景色*/
+  background-color: rgb(205, 225, 235); /*掲示板の背景色*/
 
 }
 
@@ -20,7 +20,7 @@
   border: 1px solid #ccc;
   border-radius: 1px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-  background-color: #86839a84; /*掲示板の背景色*/
+  background-color: #b5cdc484; /*掲示板の背景色*/
 }
 
 .png_map {/*親div*/
@@ -56,8 +56,8 @@
   font-weight: bold; /*太字に*/
   font-size: clamp(1.2rem, calc(1.5vw + 1.3rem), 2.5rem);/*サイズ2倍*/
   font-family :Quicksand, sans-serif;/*Google Font*/
-  top: 43%;
-  left: 20%;  
+  top: 60%;
+  left: 21%;  
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-30%,-30%);
@@ -68,8 +68,8 @@
   font-weight: bold; /*太字に*/
   font-size: clamp(1.2rem, calc(1.5vw + 1.3rem), 2.5rem);/*サイズ2倍*/
   font-family :Quicksand, sans-serif;/*Google Font*/
-  top: 6%;
-  left: 20%;  
+  top: 73%;
+  left: 21%;  
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-30%,-30%);
@@ -80,8 +80,8 @@
   font-weight: bold; /*太字に*/
   font-size: clamp(1.2rem, calc(1.5vw + 1.3rem), 2.5rem);/*サイズ2倍*/
   font-family :Quicksand, sans-serif;/*Google Font*/
-  top: 43%;
-  left: 44%;  
+  top: 22%;
+  left: 47%;  
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-30%,-30%);
@@ -92,20 +92,44 @@
   font-weight: bold; /*太字に*/
   font-size: clamp(1.2rem, calc(1.5vw + 1.3rem), 2.5rem);/*サイズ2倍*/
   font-family :Quicksand, sans-serif;/*Google Font*/
-  top: 43%;
-  left: 69%;  
+  top: 12%;
+  left: 71.5%;  
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-30%,-30%);
   }
-.png_map pha {
+.png_map pha6 {
   position: absolute;
   color: rgb(0, 0, 0);/*文字は白に*/
   font-weight: bold; /*太字に*/
   font-size: clamp(1.2rem, calc(1.5vw + 1.3rem), 2.5rem);/*サイズ2倍*/
   font-family :Quicksand, sans-serif;/*Google Font*/
-  top: 43%;
-  left: 93.5%;  
+  top: 24%;
+  left: 95.5%;  
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-30%,-30%);
+  }
+.png_map pha5 {
+position: absolute;
+color: rgb(0, 0, 0);/*文字は白に*/
+font-weight: bold; /*太字に*/
+font-size: clamp(1.2rem, calc(1.5vw + 1.3rem), 2.5rem);/*サイズ2倍*/
+font-family :Quicksand, sans-serif;/*Google Font*/
+top: 37%;
+left: 95.5%;  
+-ms-transform: translate(-50%,-50%);
+-webkit-transform: translate(-50%,-50%);
+transform: translate(-30%,-30%);
+}
+.png_map pha4 {
+  position: absolute;
+  color: rgb(0, 0, 0);/*文字は白に*/
+  font-weight: bold; /*太字に*/
+  font-size: clamp(1.2rem, calc(1.5vw + 1.3rem), 2.5rem);/*サイズ2倍*/
+  font-family :Quicksand, sans-serif;/*Google Font*/
+  top: 49%;
+  left: 95.5%;  
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-30%,-30%);
@@ -113,7 +137,7 @@
 .png_map img {
   width: 100%;
   min-width: 1450px; /* 最小幅 */
-  height: 150px;
+  height: 450px;
   }
 
 .jozenji_map {/*親div*/

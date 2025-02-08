@@ -3,13 +3,11 @@ import './workInfo.css';
 import React, { useState, useEffect} from "react";
 import { Chart, registerables } from "chart.js"
 import { Doughnut } from 'react-chartjs-2';
-import { getKintaiData } from "./utils/kintai.js";
+import { getKintaiData, changeSect } from "./utils/kintai.js";
 import Navbar from './components/Navbar/Navbar.js';
-import { Link } from 'react-router-dom';
-import { Button } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import rd_s from "./psnrd_flo.png"
-var initialURL = "http://hoya.pmcrd.mei.co.jp:5001/w_info"
+import rd_s from "./psnrd_flo2.png"
+var initialURL = process.env.REACT_APP_BACKEND_URL + "w_info"
 Chart.register(...registerables)
 Chart.register(ChartDataLabels)
 
@@ -84,17 +82,23 @@ const ChartComponent = () => {
       ) : (
         <>
           <div>
-          <Button variant="outlined" size="x-large" component={Link} to="/musen/11">無線ソリューション部</Button>
-          <div className="sectSpace">　</div>
-          <Button variant="outlined" size="x-large" component={Link} to="/system/21">システムソリューション部</Button>
-          <div className="sectSpace">　</div>
-          <Button variant="outlined" size="x-large" component={Link} to="/team/31">AIソリューション部</Button>
-          <div className="sectSpace">　</div>
-          <Button variant="outlined" size="x-large" component={Link} to="/layout">座席表</Button>
+            <button className="chsect_button"  onClick={() => changeSect("/musen/11")}> 無線ソリューション部 </button><div className="sectSpace">　</div>            
+            <button className="chsect_button"  onClick={() => changeSect("/system/21")}> システムソリューション部 </button><div className="sectSpace">　</div>
+            <button className="chsect_button"  onClick={() => changeSect("/team/31")}> AIソリューション部 </button><div className="sectSpace">　</div>
+            <button className="chsect_button"  onClick={() => changeSect("/layout")}> 座席表 </button>
           </div>
-          
+          <h3>フロア別　在席状況</h3>
+          <div className="png_map">
+            <img src={rd_s} />
+            <ps2>{kintaiData[0].work_1}人</ps2>
+            <ps3>{kintaiData[0].work_2}人</ps3>
+            <pj6>{kintaiData[1].work_1}人</pj6>
+            <pk7>{kintaiData[2].work_1}人</pk7>
+            <pha4>{kintaiData[3].work_1}人</pha4>
+            <pha5>{kintaiData[3].work_2}人</pha5>
+            <pha6>{kintaiData[3].work_3}人</pha6>
+          </div>
           <div className="chart-container">
-
             {chartData.map((data, index) => (
               <div key={index} className="chart">
               {kintaiData[index].place}
@@ -106,15 +110,7 @@ const ChartComponent = () => {
               </div>
             ))}
           </div>
-          <h3>フロア別　出社勤務状況</h3>
-          <div className="png_map">
-            <img src={rd_s} />
-            <ps2>{kintaiData[0].work_1}人</ps2>
-            <ps3>{kintaiData[0].work_2}人</ps3>
-            <pj6>{kintaiData[1].work_1}人</pj6>
-            <pk7>{kintaiData[2].work_1}人</pk7>
-            <pha>{kintaiData[3].work_1}人</pha>
-          </div>
+
         </>
       )}
     </div>

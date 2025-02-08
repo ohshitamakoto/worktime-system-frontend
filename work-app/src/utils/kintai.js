@@ -24,3 +24,7 @@ export const getTenkiData = (url) => {
       .catch(() => alert("error"));
   });
 };
+
+export const changeSect = (url) => {
+  window.location.href = url;
+};

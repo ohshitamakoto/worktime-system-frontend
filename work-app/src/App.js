@@ -163,12 +163,14 @@ const FetchData = () => {
     seatParams.set("sect", result);
     seatParams.set("set", kind);
     //doubleClick(result,freeno,"出社");
-    var purl = backendURL + result;
-    await fetch(purl,{
-      method: "POST",
-      headers:{'Content-Type': 'application/json'},
-      body: JSON.stringify({num: freeno,state: "出社"})
-    });
+    if (kind === 'set'){
+      var purl = backendURL + result;
+      await fetch(purl,{
+        method: "POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify({num: freeno,state: "出社"})
+      });
+    }
     const url_string = `/seat_set?${seatParams.toString()}`;
     window.location.href = url_string;
   }
@@ -390,7 +392,7 @@ const FetchData = () => {
                 <h3 className="header">3係</h3>
                 <h3 className="header">4係</h3>
                 <h3 className="header">5係</h3>
-                <h3 className="header">36課　5係</h3>
+                <h3 className="header">36課　4係</h3>
                 </div>
                 <div className="kintaiCardContainerJ">
                 {kintaiData.map((kintai,i) => {

@@ -144,12 +144,14 @@ const Sys_sol = () => {
     seatParams.set("sect", result);
     seatParams.set("set", kind);
     //doubleClick(result,freeno,"出社");
-    var purl = backendURL + result;
-    await fetch(purl,{
-      method: "POST",
-      headers:{'Content-Type': 'application/json'},
-      body: JSON.stringify({num: freeno,state: "出社"})
-    });
+    if (kind === 'set'){
+      var purl = backendURL + result;
+      await fetch(purl,{
+        method: "POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify({num: freeno,state: "出社"})
+      });
+    }
     const url_string = `/seat_set?${seatParams.toString()}`;
     window.location.href = url_string;
   }

@@ -109,11 +109,21 @@
   margin-bottom: 0px;
   margin-top: 0;
 }
+
 .cardState1_3 {
   padding: 0;
   font-size: 12px;
   color: white;
   background-color: rgb(8, 162, 228);
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+
+.cardState1_4 {
+  padding: 0;
+  font-size: 14px;
+  color: black;
+  background-color: rgb(125, 239, 53);
   margin-bottom: 0px;
   margin-top: 0;
 }

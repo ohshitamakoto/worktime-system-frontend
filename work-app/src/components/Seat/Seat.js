@@ -39,7 +39,9 @@ const Seat = ({seat}) => {
           ( state.indexOf('出張') !== -1)  ? "cardState1_3" :
           ( state.indexOf('出社') !== -1)  ? "cardState1" :
            "seatTime"}>{state}</h3>
-          <h2 className={substate !== "-" ? "seatTime2" : "seatTime"}>{substate}</h2>
+          <h2 className={(substate.indexOf('内線') !== -1) ? "cardState1_4" :
+          substate !== "-" ? "seatTime2" :
+          "seatTime"}>{substate}</h2>
         </div>
       )
 };

@@ -78,11 +78,12 @@ const Card = ({kintai}) => {
       
       <h3 className={state === "年休" ? "cardState2":
                      ( main_state.indexOf('年休') !== -1)  ? "cardState2" : 
+                     ( l_state.indexOf('出張') !== -1)  ? "cardState1_3" : 
                     push_state === "on" ? "card_State1" :
                     l_state === "終了" ? "cardState1_2" :
                     l_state === "在宅" ? "cardState1_1" :
                      ( l_state.indexOf('退勤') !== -1)  ? "cardState1_2" : 
-                     ( l_state.indexOf('出張') !== -1)  ? "cardState1_3" : 
+                    
                      
                     "card_State1_1"}>{state}</h3>
       <h3 className={sub_state === "無" ? "cardState4": "cardState3"}>{sub_state}</h3>

@@ -114,7 +114,11 @@ const Sys_sol = () => {
   const his_dialog = document.querySelector("#his_dialog");
   const singleClick = async (sect,n) => {
     try {
-      console.log("シングルクリック!",n,sect);
+      console.log("シングルクリック!",n,sect,kintaiData[n].name.DisplayName);
+      if (kintaiData[n].name === "None"){
+        console.log("無効カード")
+        return
+      }
       var purl = backendURL + "history";
       const response = await fetch(purl,{
         method: "POST",
@@ -237,7 +241,6 @@ const Sys_sol = () => {
                 <h3 className="header">1係</h3>
                 <h3 className="header">2係</h3>
                 <h3 className="header">3係</h3>
-                <h3 className="header">4係</h3>
                 </div>
                 <div className="kintaiCardContainer">
                 {kintaiData.map((kintai,i) => {
@@ -252,6 +255,7 @@ const Sys_sol = () => {
                 <h3 className="header">2係 (金沢)</h3>
                 <h3 className="header">3係</h3>
                 <h3 className="header">4係</h3>
+                <h3 className="header">5係</h3>
                 </div>
                 <div className="kintaiCardContainer">
                 {kintaiData.map((kintai,i) => {
@@ -265,7 +269,7 @@ const Sys_sol = () => {
                 <h3 className="header">1係</h3>
                 <h3 className="header">2係</h3>
                 <h3 className="header">3係</h3>
-                <h3 className="header">4係</h3>
+                <h3 className="header">4係 (金沢)</h3>
                 <h3 className="header">5係 (浜松)</h3>
                 </div>
                 <div className="kintaiCardContainer">
@@ -281,7 +285,6 @@ const Sys_sol = () => {
                 <h3 className="header">2係 (金沢)</h3>
                 <h3 className="header">3係</h3>
                 <h3 className="header">4係</h3>
-                <h3 className="header">5係 (仙台)</h3>
                 </div>
                 <div className="kintaiCardContainer">
                 {kintaiData.map((kintai,i) => {

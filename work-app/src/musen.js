@@ -123,7 +123,11 @@ const Musen_sol = () => {
   const his_dialog = document.querySelector("#his_dialog");
   const singleClick = async (sect,n) => {
     try {
-      console.log("シングルクリック!",n,sect);
+      console.log("シングルクリック!",n,sect,kintaiData[n].name.DisplayName);
+      if (kintaiData[n].name === "None"){
+        console.log("無効カード")
+        return
+      }
       var purl = backendURL + "history";
       const response = await fetch(purl,{
         method: "POST",

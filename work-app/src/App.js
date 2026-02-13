@@ -133,13 +133,18 @@ const FetchData = () => {
   const his_dialog = document.querySelector("#his_dialog");
   const singleClick = async (sect,n) => {
     try {
-      console.log("シングルクリック!",n,sect);
+      console.log("シングルクリック!",n,sect,kintaiData[n].name.DisplayName);
+      if (kintaiData[n].name === "None"){
+        console.log("無効カード")
+        return
+      }
       var purl = backendURL + "history";
       const response = await fetch(purl,{
         method: "POST",
         headers:{'Content-Type': 'application/json'},
         body: JSON.stringify({name: kintaiData[n].name.DisplayName,sect:sect})
       });
+      
       const data = await response.json();
       console.log(data)
       console.log(kintaiData[n].name.DisplayName)
@@ -290,10 +295,10 @@ const FetchData = () => {
               </SwiperSlide>
               <SwiperSlide>
                 <div className="kintaiCardHeaderContainer">
-                <h3 className="header">{team}課 (金沢・仙台)</h3>
+                <h3 className="header">{team}課 (金沢)</h3>
                 <h3 className="header">1係</h3>
                 <h3 className="header">2係</h3>
-                <h3 className="header">3係 (仙台)</h3>
+                <h3 className="header">3係</h3>
                 <h3 className="header">4係</h3>
                 <h3 className="header">5係</h3>
                 </div>
@@ -304,15 +309,16 @@ const FetchData = () => {
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="kintaiCardHeaderContainer">
+                <div className="kintaiCardHeaderContainerJ">
                 <h3 className="header">{team}課 (浜松)</h3>
                 <h3 className="header">1係</h3>
                 <h3 className="header">2係</h3>
                 <h3 className="header">3係</h3>
                 <h3 className="header">4係</h3>
                 <h3 className="header">5係</h3>
+                <h3 className="header">ITS事業推進室2課</h3>
                 </div>
-                <div className="kintaiCardContainer">
+                <div className="kintaiCardContainerJ">
                 {kintaiData.map((kintai,i) => {
                   return <button className="button"  onClick={() => onDClick("34",i)} key={i}><Card kintai={kintai} /> </button>;
                 })}
@@ -350,11 +356,11 @@ const FetchData = () => {
               </SwiperSlide>
               <SwiperSlide>
                 <div className="kintaiCardHeaderContainer">
-                <h3 className="header">{team}課 (仙台・金沢)</h3>
+                <h3 className="header">{team}課 (仙台)</h3>
                 <h3 className="header">1係</h3>
                 <h3 className="header">2係</h3>
                 <h3 className="header">3係</h3>
-                <h3 className="header">4係 (金沢)</h3>
+                <h3 className="header">4係</h3>
                 </div>
                 <div className="kintaiCardContainer">
                 {kintaiData.map((kintai,i) => {
@@ -366,6 +372,7 @@ const FetchData = () => {
                 <div className="kintaiCardHeaderContainer">
                 <h3 className="header">{team}課 (金沢・仙台)</h3>
                 <h3 className="header">1係</h3>
+                <h3 className="header">2係</h3>
                 </div>
                 <div className="kintaiCardContainer">
                 {kintaiData.map((kintai,i) => {

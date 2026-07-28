@@ -210,7 +210,7 @@ const Sys_sol = () => {
             }
             Teams同期時刻：{upTime}
             </div>
-            <button className="chsect_button"  onClick={() => changeSect("/musen/11")}> 無線ソリューション部 </button><div className="sectSpace">　</div>            
+            <button className="chsect_button"  onClick={() => changeSect("/musen/11")}> ワイヤレス＆ネットワーク部 </button><div className="sectSpace">　</div>            
             <button className="chsect_button"  onClick={() => changeSect("/system/21")}> システムソリューション部 </button><div className="sectSpace">　</div>
             <button className="chsect_button"  onClick={() => changeSect("/team/31")}> AIソリューション部 </button><div className="sectSpace">　</div>
             <button className="chsect_button"  onClick={() => changeSect("/layout")}> 座席表 </button>
@@ -236,13 +236,13 @@ const Sys_sol = () => {
               }}
             >
               <SwiperSlide>
-                <div className="kintaiCardHeaderContainer">
+                <div className="kintaiCardHeaderContainerM2">
                 <h3 className="header">{team_w}課 (仙台)</h3>
                 <h3 className="header">1係</h3>
                 <h3 className="header">2係</h3>
                 <h3 className="header">3係</h3>
                 </div>
-                <div className="kintaiCardContainer">
+                <div className="kintaiCardContainerM2">
                 {kintaiData.map((kintai,i) => {
                   return <button className="button"  onClick={() => onDClick("21",i)} key={i}> <Card  kintai={kintai} /> </button>;
                 })}

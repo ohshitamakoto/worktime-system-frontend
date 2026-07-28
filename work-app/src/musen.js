@@ -198,7 +198,7 @@ const Musen_sol = () => {
 
   return (
     <>
-      <Navbar title={'無線ソリューション部　　勤怠状況'} sect={1}/>
+      <Navbar title={'ワイヤレス＆ネットワーク部　　勤怠状況'} sect={1}/>
       <div className="App">
 
         {loading ? (
@@ -218,7 +218,7 @@ const Musen_sol = () => {
             }
             Teams同期時刻：{upTime}
             </div>
-            <button className="chsect_button"  onClick={() => changeSect("/musen/11")}> 無線ソリューション部 </button><div className="sectSpace">　</div>            
+            <button className="chsect_button"  onClick={() => changeSect("/musen/11")}> ワイヤレス＆ネットワーク部 </button><div className="sectSpace">　</div>            
             <button className="chsect_button"  onClick={() => changeSect("/system/21")}> システムソリューション部 </button><div className="sectSpace">　</div>
             <button className="chsect_button"  onClick={() => changeSect("/team/31")}> AIソリューション部 </button><div className="sectSpace">　</div>
             <button className="chsect_button"  onClick={() => changeSect("/layout")}> 座席表 </button>
@@ -228,7 +228,7 @@ const Musen_sol = () => {
                 <Tab label=<div className="header3">技術11課 </div> value={0} />
                 <Tab label=<div className="header3">技術14課 </div> value={1} />
                 <Tab label=<div className="header3">技術15課 </div> value={2} />
-                <Tab label=<div className="header3">無線Sol </div> value={3} />
+                <Tab label=<div className="header3">ワイヤレス＆ネットワーク </div> value={3} />
               </Tabs>
 
             </div>
@@ -243,43 +243,43 @@ const Musen_sol = () => {
               }}
             >
               <SwiperSlide>
-                <div className="kintaiCardHeaderContainer">
+                <div className="kintaiCardHeaderContainerM2">
                 <h3 className="header">{team_w}課 (仙台)</h3>
                 <h3 className="header">1係</h3>
                 <h3 className="header">2係</h3>
                 <h3 className="header">3係</h3>
                 </div>
-                <div className="kintaiCardContainer">
+                <div className="kintaiCardContainerM2">
                 {kintaiData.map((kintai,i) => {
                   return <button className="button"  onClick={() => onDClick("11",i)} key={i}> <Card  kintai={kintai} /> </button>;
                 })}
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="kintaiCardHeaderContainerM">
+                <div className="kintaiCardHeaderContainerJ">
                 <h3 className="header">{team_w}課 (仙台)</h3>
                 <h3 className="header">1係</h3>
                 <h3 className="header">2係</h3>
                 <h3 className="header">3係</h3>
                 <h3 className="header">4係</h3>
                 <h3 className="header">5係</h3>
-                <h3 className="header">6係</h3>
+                <h3 className="header">　</h3>
                 </div>
-                <div className="kintaiCardContainerM">
+                <div className="kintaiCardContainerJ">
                 {kintaiData.map((kintai,i) => {
                   return <button className="button"  onClick={() => onDClick("14",i)} key={i}><Card kintai={kintai} /> </button>;
                 })}
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="kintaiCardHeaderContainer">
+                <div className="kintaiCardHeaderContainerM2">
                 <h3 className="header">{team_w}課 (仙台)</h3>
                 <h3 className="header">1係</h3>
                 <h3 className="header">2係</h3>
                 <h3 className="header">3係</h3>
                 <h3 className="header">4係</h3>
                 </div>
-                <div className="kintaiCardContainer">
+                <div className="kintaiCardContainerM2">
                 {kintaiData.map((kintai,i) => {
                   return <button className="button"  onClick={() => onDClick("15",i)} key={i}><Card kintai={kintai} /> </button>;
                 })}
@@ -287,7 +287,7 @@ const Musen_sol = () => {
               </SwiperSlide>
               <SwiperSlide>
                 <div className="kintaiCardHeaderContainer">
-                <h3 className="header">無線 Sol</h3>
+                <h3 className="header">ワイヤレス＆ネットワーク</h3>
                 </div>
                 <div className="kintaiCardContainer">
                 {kintaiData.map((kintai,i) => {

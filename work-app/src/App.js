@@ -43,9 +43,9 @@ const FetchData = () => {
     if (team === 39){
       team = 30;
     }
-    if (team === 38){
-      team = 39;
-    }
+    //if (team === 38){
+    //  team = 39;
+    //}
     if (team === 40){
       team = 50;
     }
@@ -235,7 +235,7 @@ const FetchData = () => {
             }
             Teams同期時刻：{upTime}
             </div>
-            <button className="chsect_button"  onClick={() => changeSect("/musen/11")}> 無線ソリューション部 </button><div className="sectSpace">　</div>            
+            <button className="chsect_button"  onClick={() => changeSect("/musen/11")}> ワイヤレス＆ネットワーク部 </button><div className="sectSpace">　</div>            
             <button className="chsect_button"  onClick={() => changeSect("/system/21")}> システムソリューション部 </button><div className="sectSpace">　</div>
             <button className="chsect_button"  onClick={() => changeSect("/team/31")}> AIソリューション部 </button><div className="sectSpace">　</div>
             <button className="chsect_button"  onClick={() => changeSect("/layout")}> 座席表 </button>
@@ -248,7 +248,7 @@ const FetchData = () => {
                 <Tab label=<div className="header3">技術35課 </div> value={4} />
                 <Tab label=<div className="header3">技術36課 </div> value={5} />
                 <Tab label=<div className="header3">技術37課 </div> value={6} />
-                <Tab label=<div className="header3">技術39課 </div> value={7} />
+                <Tab label=<div className="header3">技術38課 </div> value={7} />
                 <Tab label=<div className="header3">AI Sol </div> value={8} />
                 <Tab label=<div className="header3">定禅寺オフィス </div> value={9} />
               </Tabs>
@@ -294,15 +294,16 @@ const FetchData = () => {
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="kintaiCardHeaderContainer">
+                <div className="kintaiCardHeaderContainerJ">
                 <h3 className="header">{team}課 (金沢)</h3>
                 <h3 className="header">1係</h3>
                 <h3 className="header">2係</h3>
                 <h3 className="header">3係</h3>
                 <h3 className="header">4係</h3>
                 <h3 className="header">5係</h3>
+                <h3 className="header">6係</h3>
                 </div>
-                <div className="kintaiCardContainer">
+                <div className="kintaiCardContainerJ">
                 {kintaiData.map((kintai,i) => {
                   return <button className="button"  onClick={() => onDClick("33",i)} key={i}><Card kintai={kintai} /> </button>;
                 })}
@@ -370,13 +371,15 @@ const FetchData = () => {
               </SwiperSlide>
               <SwiperSlide>
                 <div className="kintaiCardHeaderContainer">
-                <h3 className="header">{team}課 (金沢・仙台)</h3>
-                <h3 className="header">1係</h3>
-                <h3 className="header">2係</h3>
+                <h3 className="header">{team}課 (福岡)</h3>
+                <h3 className="header"></h3>
+                <h3 className="header"></h3>
+                <h3 className="header"></h3>
+                <h3 className="header"></h3>
                 </div>
                 <div className="kintaiCardContainer">
                 {kintaiData.map((kintai,i) => {
-                  return <button className="button"  onClick={() => onDClick("39",i)} key={i}><Card kintai={kintai} /> </button>;
+                  return <button className="button"  onClick={() => onDClick("38",i)} key={i}><Card kintai={kintai} /> </button>;
                 })}
                 </div>
               </SwiperSlide>
@@ -392,7 +395,7 @@ const FetchData = () => {
               </SwiperSlide>
               <SwiperSlide>
                 
-                <div className="kintaiCardHeaderContainerJ">
+                <div className="kintaiCardHeaderContainerJ2">
                 <h3 className="header">35課</h3>
                 <h3 className="header">1係</h3>
                 <h3 className="header">2係</h3>
@@ -400,8 +403,9 @@ const FetchData = () => {
                 <h3 className="header">4係</h3>
                 <h3 className="header">5係</h3>
                 <h3 className="header">36課　4係</h3>
+                <h3 className="header">36課　長期出張者</h3>
                 </div>
-                <div className="kintaiCardContainerJ">
+                <div className="kintaiCardContainerJ2">
                 {kintaiData.map((kintai,i) => {
                   return <button className="button"  onClick={() => onDClick("50",i)} key={i}><Card kintai={kintai} /> </button>;
                 })}

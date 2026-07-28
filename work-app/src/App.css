@@ -40,9 +40,25 @@
   gap: 5px;
   margin-top: 5px;
 }
-.kintaiCardHeaderContainerM {
+.kintaiCardHeaderContainerJ2 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+.kintaiCardContainerJ2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, auto);
+  place-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+.kintaiCardHeaderContainerM {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   place-items: center;
   gap: 5px;
   margin-top: 5px;
@@ -50,7 +66,24 @@
 
 .kintaiCardContainerM {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, auto);
+  place-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+.kintaiCardHeaderContainerM2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  place-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.kintaiCardContainerM2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-auto-flow: column;
   grid-template-rows: repeat(7, auto);
   place-items: center;

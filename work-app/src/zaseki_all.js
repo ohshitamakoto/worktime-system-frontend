@@ -118,12 +118,12 @@ export const  Rd_zaseki_all = () =>{
         setSeatData(res);
       };
       fetchSeatData();
-    
-      const interval = setInterval(() => {
-        fetchSeatData();
-      }, 350000);
-    
-      return () => clearInterval(interval);
+
+      const refreshInterval = setInterval(async () => {
+        const res = await getContentData(SeatURL);
+        setSeatData(res);
+      }, 5000);
+      return () => clearInterval(refreshInterval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [count]);
   

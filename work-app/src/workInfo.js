@@ -3,7 +3,7 @@ import './workInfo.css';
 import React, { useState, useEffect} from "react";
 import { Chart, registerables } from "chart.js"
 import { Doughnut } from 'react-chartjs-2';
-import { getKintaiData, changeSect } from "./utils/kintai.js";
+import { getKintaiData, changeSect, subscribeToBackendUpdates } from "./utils/kintai.js";
 import Navbar from './components/Navbar/Navbar.js';
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import rd_s from "./psnrd_flo2.png"
@@ -64,11 +64,8 @@ const ChartComponent = () => {
       };
       fetchKWorkInfo();
   
-      const interval = setInterval(() => {
-          fetchKWorkInfo();
-      }, 30000);
-  
-      return () => clearInterval(interval);
+        return subscribeToBackendUpdates(fetchKWorkInfo);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [update,]);
 
   return(
@@ -89,7 +86,7 @@ const ChartComponent = () => {
           </div>
           <h3>フロア別　在席状況</h3>
           <div className="png_map">
-            <img src={rd_s} />
+            <img src={rd_s} alt="フロア図" />
             <ps2>{kintaiData[0].work_1}人</ps2>
             <ps3>{kintaiData[0].work_2}人</ps3>
             <pj6>{kintaiData[1].work_1}人</pj6>

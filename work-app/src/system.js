@@ -1,5 +1,5 @@
-import React, { useState, useEffect} from "react";
-import { getKintaiData, changeSect } from "./utils/kintai.js";
+import React, { useState, useEffect, useRef} from "react";
+import { getKintaiData, changeSect, subscribeToBackendUpdates } from "./utils/kintai.js";
 import './App.css';
 import Card from './components/Card/Card.js';
 import Navbar from './components/Navbar/Navbar.js';
@@ -88,28 +88,40 @@ const Sys_sol = () => {
     };
     fetchKintaiDataM();
 
-    const interval = setInterval(() => {
-      fetchKintaiDataM();
-    }, 350000);
-
-    return () => clearInterval(interval);
+    return subscribeToBackendUpdates(fetchKintaiDataM);
   }, [count,update]);
    
   //勤怠カードクリック操作
-  let clickCount = 0;
-  const onDClick = (sect,n) => {
-    clickCount++;
-    if (clickCount < 2) {
-      setTimeout(() => {
-        if (2 === clickCount) {
-          doubleClick(sect,n);
-        }
-        if (1 === clickCount) {
-          singleClick(sect,n);
-        }
-        clickCount = 0;
-      }, 500);
+  const pendingClickRef = useRef(null);
+  useEffect(() => () => {
+    if (pendingClickRef.current) {
+      clearTimeout(pendingClickRef.current.timer);
     }
+  }, []);
+
+  const onDClick = (sect,n) => {
+    const pendingClick = pendingClickRef.current;
+    if (pendingClick && pendingClick.sect === sect && pendingClick.index === n) {
+      clearTimeout(pendingClick.timer);
+      pendingClickRef.current = null;
+      doubleClick(sect,n);
+      return;
+    }
+
+    if (pendingClick) {
+      clearTimeout(pendingClick.timer);
+      pendingClickRef.current = null;
+      singleClick(pendingClick.sect,pendingClick.index);
+    }
+
+    const nextClick = { sect, index: n, timer: null };
+    nextClick.timer = setTimeout(() => {
+      if (pendingClickRef.current === nextClick) {
+        pendingClickRef.current = null;
+        singleClick(sect,n);
+      }
+    }, 500);
+    pendingClickRef.current = nextClick;
   }
   const his_dialog = document.querySelector("#his_dialog");
   const singleClick = async (sect,n) => {

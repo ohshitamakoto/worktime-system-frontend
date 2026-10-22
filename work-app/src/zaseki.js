@@ -28,12 +28,9 @@ function Rd_zaseki() {
       setSeatData(res);
     };
     fetchSeatData();
-  
-    const interval = setInterval(() => {
-      fetchSeatData();
-    }, 350000);
-  
-    return () => clearInterval(interval);
+
+    const refreshInterval = setInterval(fetchSeatData, 5000);
+    return () => clearInterval(refreshInterval);
     }, []);
   
   

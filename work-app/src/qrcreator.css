@@ -1,0 +1,133 @@
+.qr-creator {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 48px 20px;
+  color: #192a31;
+  background-color: #e4edf0;
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 25%, transparent 25%), linear-gradient(315deg, rgba(255, 255, 255, 0.35) 25%, transparent 25%);
+  background-position: 0 0, 24px 24px;
+  background-size: 48px 48px;
+}
+
+.qr-creator__panel {
+  width: min(100%, 520px);
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 36px;
+  border-top: 5px solid #176b68;
+  background: #fff;
+  box-shadow: 0 16px 48px rgba(25, 42, 49, 0.12);
+}
+
+.qr-creator__header {
+  margin-bottom: 28px;
+}
+
+.qr-creator__eyebrow {
+  margin: 0 0 8px;
+  color: #176b68;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.qr-creator__header h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.3;
+}
+
+.qr-creator__description {
+  margin: 10px 0 0;
+  color: #52656a;
+  font-size: 14px;
+}
+
+.qr-creator__fields {
+  display: grid;
+  gap: 20px;
+}
+
+.qr-creator__field {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.qr-creator__field input {
+  width: 100%;
+  min-height: 48px;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #aab9bb;
+  border-radius: 3px;
+  color: #192a31;
+  background: #fff;
+  font: inherit;
+  font-weight: 400;
+}
+
+.qr-creator__field input:focus {
+  border-color: #176b68;
+  outline: 2px solid rgba(23, 107, 104, 0.18);
+}
+
+.qr-creator__field small {
+  color: #637377;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.qr-creator__button {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 26px;
+  border: 0;
+  border-radius: 3px;
+  color: #fff;
+  background: #176b68;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.qr-creator__button:hover:not(:disabled) {
+  background: #105451;
+}
+
+.qr-creator__button:disabled {
+  color: #647275;
+  background: #d2dcdd;
+  cursor: not-allowed;
+}
+
+.qr-creator__result {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid #dce4e4;
+}
+
+.qr-creator__result-name {
+  margin: 0;
+  font-weight: 700;
+}
+
+.qr-creator__url {
+  color: #176b68;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 520px) {
+  .qr-creator {
+    padding: 20px 12px;
+  }
+
+  .qr-creator__panel {
+    padding: 26px 20px;
+  }
+}

@@ -16,6 +16,7 @@ import ChartComponent from "./workInfo.js";
 import Rd_zaseki from './zaseki.js';
 import {Rd_zaseki_all} from "./zaseki_all.js";
 import {Rd_zaseki_free} from "./zaseki_free.js";
+import QrCreator from "./qrcreator.js";
 import { GetWeatherNewsS, GetWeatherNewsK, GetWeatherNewsH, GetMessage, GetWeatherState } from './components/Contents/weather.js'
 var init_no = 31
 var initialURL = process.env.REACT_APP_BACKEND_URL + "31";
@@ -504,6 +505,7 @@ function Kintai() {
       <Route path="/system/" component={Sys_sol} />
       <Route path="/zaseki/" component={Rd_zaseki} />
       <Route path="/chart/" component={ChartComponent} />
+      <Route path="/qrcreator" component={QrCreator} />
       <Route path="/set/" component={Info_set} />
       <Route path="/seat_set/" component={Rd_zaseki_free} />
       <Route path="/" component={FetchData} />
